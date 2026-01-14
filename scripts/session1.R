@@ -1,11 +1,10 @@
 
-### series 1 
+### Series 1 
 
+library(tidyverse)
 
 # Exercise 4 --------------------------------------------------------------
 
-
-library(tidyverse)
 
 # get data
 url = "https://stat.ethz.ch/Teaching/Datasets/cas-das/stream.dat"

@@ -117,3 +117,50 @@ anova(model3)
 # has now no significant impact!
 # already in the interaction plot we saw that the lines for Los Angeles and Portland
 # are almost parallel (no interaction) and largely overlapping (no effect of city)
+
+
+
+# Exercise 5 (Intuition for F distribution) -------------------------------
+
+# plot density function of the F distribution for diffenet denominator degrees of freedom
+curve(
+  df(x, df1 = 3, df2 = 1), 
+  xlim = c(0, 5), ylim = c(0, 0.75), lty = 1,ylab = "density")
+
+curve(
+  df(x, df1 = 3, df2 = 5), 
+  lty = 2, add = TRUE)
+
+curve(
+  df(x, df1 = 3, df2 = 10), 
+  lty = 3, add = TRUE)
+
+curve(df(x, df1 = 3, df2 = 20), 
+      lty = 4, add = TRUE)
+
+legend("topright", paste("F", paste(rep(3, 4), c(1, 5, 10, 20), sep = ";")),
+       lty = 1:4, lwd = 2, col = rep(1, 4), cex = 0.9)
+
+# increasing df2 moves probability mass (area under curve) towards 0
+
+# plot density function of the F distribution for diffenet nominator degrees of freedom
+curve(df(x, df1 = 1, df2 = 20), xlim = c(0, 5), ylim = c(0, 1), lty = 1,
+      ylab = "density")
+
+curve(df(x, df1 = 5, df2 = 20), lty = 2, add = TRUE)
+
+curve(df(x, df1 = 10, df2 = 20), lty = 3, add = TRUE)
+
+curve(df(x, df1 = 20, df2 = 20), lty = 4, add = TRUE)
+
+legend("topright", paste("F", paste(c(1, 5, 10, 20), rep(20, 4), sep = ";")),
+       lty = 1:4, lwd = 2, col = rep(1, 4), cex = 0.9)
+
+# increasing df1 reduces skewness
+
+
+# corresponding 95% quantiles (qf) and p-values for some quantile (pf)
+df1 = 3
+df2 = c(1, 5, 10, 20)
+qf(0.95, df1 = df1, df2 = df2)
+pf(3.5, df1 = df1, df2 = df2, lower.tail = FALSE)
